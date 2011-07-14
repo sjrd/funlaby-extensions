@@ -1,0 +1,36 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{D93703AD-586B-4E2B-952C-28E032BF8982}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="GraphicsExtensions\GraphicsExtensions.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="GraphicsExtensions">
+			<MSBuild Projects="GraphicsExtensions\GraphicsExtensions.dproj"/>
+		</Target>
+		<Target Name="GraphicsExtensions:Clean">
+			<MSBuild Targets="Clean" Projects="GraphicsExtensions\GraphicsExtensions.dproj"/>
+		</Target>
+		<Target Name="GraphicsExtensions:Make">
+			<MSBuild Targets="Make" Projects="GraphicsExtensions\GraphicsExtensions.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="GraphicsExtensions"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="GraphicsExtensions:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="GraphicsExtensions:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
